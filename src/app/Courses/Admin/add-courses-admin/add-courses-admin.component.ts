@@ -27,11 +27,10 @@ export class AddCoursesAdminComponent {
 
   addCourse() {
     this.newCourse.imageCourse=this.selectedFileName;
-    // Call your service to add the new course
     this.courseService.addCourse(this.newCourse).subscribe(() => {
       console.log('Course added successfully');
-      // Redirect to the course list page or wherever you need to navigate
-      this.router.navigate(['/']);
+      this.router.navigate(['/all']);
     });
   }
+  
 }

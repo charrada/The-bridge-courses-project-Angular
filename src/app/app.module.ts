@@ -15,10 +15,11 @@ import { FormsModule } from '@angular/forms';
 import { AllCoursesComponent } from './Courses/User/all-courses/all-courses.component';
 import { AllCoursesAdminComponent } from './Courses/Admin/all-courses-admin/all-courses-admin.component';
 import { AddCoursesAdminComponent } from './Courses/Admin/add-courses-admin/add-courses-admin.component';
+import { UpdateCourseComponent } from './Courses/Admin/update-courses/update-courses.component';
 
 
 @NgModule({
-  declarations: [AppComponent, AllCoursesComponent, AllCoursesAdminComponent,AddCoursesAdminComponent],
+  declarations: [AppComponent, AllCoursesComponent, AllCoursesAdminComponent,AddCoursesAdminComponent, UpdateCourseComponent],
  imports: [
     BrowserModule,
     AppRoutingModule,
