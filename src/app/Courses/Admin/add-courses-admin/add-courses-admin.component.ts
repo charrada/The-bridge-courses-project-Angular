@@ -31,7 +31,7 @@ export class AddCoursesAdminComponent {
     this.courseService.addCourse(this.newCourse).subscribe(() => {
       console.log('Course added successfully');
       // Redirect to the course list page or wherever you need to navigate
-      this.router.navigate(['/courses']);
+      this.router.navigate(['/']);
     });
   }
 }

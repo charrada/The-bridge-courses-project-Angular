@@ -8,11 +8,9 @@ import { UpdateCoursesAdminComponent } from './Courses/Admin/update-courses-admi
 
 const routes: Routes = [
   { path: '', component: AllCoursesComponent }, 
-  { path: 'adm', component: AllCoursesAdminComponent }, 
-  { path: 'courses', component: AllCoursesComponent }, 
-  { path: 'adm', component: AllCoursesAdminComponent }, 
-  { path: 'adm/add', component: AddCoursesAdminComponent }, 
-  { path: 'adm/update', component: UpdateCoursesAdminComponent }, 
+  { path: 'all', component: AllCoursesAdminComponent }, 
+  { path: 'add', component: AddCoursesAdminComponent }, 
+  { path: 'update/:id', component: UpdateCoursesAdminComponent },
 
 ];
 

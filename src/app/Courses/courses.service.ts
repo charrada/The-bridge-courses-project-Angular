@@ -23,6 +23,10 @@ export class CoursesService {
     return this.httpClient.delete<void>(`${this.apiUrl}/deleteCourse/${courseId}`);
   }
 
+  getCourseById(courseId: number): Observable<course> {
+    return this.httpClient.get<course>(`${this.apiUrl}/getCourseById/${courseId}`);
+  }
+  
   getAllCourses(): Observable<course[]> {
     return this.httpClient.get<course[]>(`${this.apiUrl}/`);
   }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { course } from 'src/app/models/course.model';
 import { CoursesService } from 'src/app/Courses/courses.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-all-courses-admin',
@@ -11,7 +12,7 @@ export class AllCoursesAdminComponent implements OnInit {
   courses: course[] = [];
   searchTerm: string = '';
 
-  constructor(private coursesService: CoursesService) { }
+  constructor(private coursesService: CoursesService, private router: Router) { }
 
   ngOnInit(): void {
     this.loadCourses();
@@ -36,12 +37,21 @@ export class AllCoursesAdminComponent implements OnInit {
   }
 
   deleteCourse(courseId: number) {
-    console.log(`Deleting course with ID ${courseId}`);
+    this.coursesService.deleteCourse(courseId).subscribe(
+      () => {
+        console.log(`Course with ID ${courseId} deleted successfully`);
+        // Reload the courses after deletion
+        this.loadCourses();
+      },
+      (error) => {
+        console.error(`Error deleting course with ID ${courseId}:`, error);
+        // Handle error (e.g., display an error message)
+      }
+    );
   }
+  
 
-  updateCourse(courseId: number) {
-   
-
-
+  editCourse(courseId: number) {
+    this.router.navigate(['/update', courseId]);
   }
 }
