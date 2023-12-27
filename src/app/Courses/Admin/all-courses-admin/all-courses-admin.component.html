@@ -1,47 +1,44 @@
 <!-- courses.component.html -->
 
 <div class="container mt-4">
-    <!-- Search input -->
-    <div class="mb-3">
-      <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchTerm">
-    </div>
-  
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Course ID</th>
-          <th>Name</th>
-          <th>Image</th>
-          <th>Description</th>
-          <th>Price</th>
-          <th>Action</th><!-- Column for buttons -->
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let course of filterCourses()">
-          <td>{{ course.idCourse }}</td>
-          <td>{{ course.nameCourse }}</td>
-          <td><img [src]="course.imageCourse" alt="{{ course.nameCourse }}" style="max-width: 50px; max-height: 50px;"></td>
-          <td>{{ course.description }}</td>
-          <td>{{ course.price }}</td>
-          <td>
-
-<button class="btn btn-primary" [routerLink]="['/update', course.idCourse]">Update</button> &nbsp;
-            
-            <!-- Delete button -->
-            <button class="btn btn-danger" (click)="deleteCourse(course.idCourse)">Delete</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  
-    <!-- Pagination -->
-    <nav aria-label="Page navigation example">
-      <ul class="pagination justify-content-center">
-        <li class="page-item" *ngFor="let page of [1, 2, 3, 4, 5]">
-          <a class="page-link" href="#">{{ page }}</a>
-        </li>
-      </ul>
-    </nav>
+  <div class="mb-3">
+    <a routerLink="/add" class="btn btn-success">Add Course</a>
   </div>
-  
+  <div class="mb-3">
+    <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchTerm">
+  </div>
+
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>Course ID</th>
+        <th>Name</th>
+        <th>Image</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let course of filterCourses()">
+        <td>{{ course.idCourse }}</td>
+        <td>{{ course.nameCourse }}</td>
+        <td><img [src]="'/assets/' + course.imageCourse" class="img-thumbnail" style="max-width: 50px; max-height: 50px;"></td>
+        <td>{{ course.description }}</td>
+        <td>{{ course.price }}</td>
+        <td>
+          <button class="btn btn-primary" [routerLink]="['/update', course.idCourse]">Update</button> &nbsp;
+          <button class="btn btn-danger" (click)="deleteCourse(course.idCourse)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li class="page-item" *ngFor="let page of [1, 2, 3, 4, 5]">
+        <a class="page-link" href="#">{{ page }}</a>
+      </li>
+    </ul>
+  </nav>
+</div>
