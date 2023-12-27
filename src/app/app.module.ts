@@ -13,10 +13,11 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { FormsModule } from '@angular/forms';
 import { AllCoursesComponent } from './Courses/User/all-courses/all-courses.component';
+import { AllCoursesAdminComponent } from './Courses/Admin/all-courses-admin/all-courses-admin.component';
 
 
 @NgModule({
-  declarations: [AppComponent, AllCoursesComponent],
+  declarations: [AppComponent, AllCoursesComponent, AllCoursesAdminComponent],
  imports: [
     BrowserModule,
     AppRoutingModule,
