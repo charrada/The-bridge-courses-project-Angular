@@ -1,0 +1,16 @@
+<div class="modal-header">
+    <h4 class="modal-title">Update Course</h4>
+    <button type="button" class="close" aria-label="Close" (click)="cancel()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <label for="updateName" class="form-label">Name:</label>
+    <input type="text" id="updateName" [(ngModel)]="updatedCourse.nameCourse" name="updateName" class="form-control" required>
+    <!-- Add other fields for updating as needed -->
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
+    <button type="button" class="btn btn-primary" (click)="saveChanges()">Save Changes</button>
+  </div>
+  

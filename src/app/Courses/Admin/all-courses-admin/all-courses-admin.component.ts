@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { course } from 'src/app/models/course.model'; // Assuming your model is named Course (capitalized)
-import { CoursesService } from 'src/app/Courses/courses.service'; // Adjust the path
+import { course } from 'src/app/models/course.model';
+import { CoursesService } from 'src/app/Courses/courses.service';
+import { UpdateCoursesAdminComponent } from '../update-courses-admin/update-courses-admin.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-all-courses-admin',
@@ -11,7 +13,7 @@ export class AllCoursesAdminComponent implements OnInit {
   courses: course[] = [];
   searchTerm: string = '';
 
-  constructor(private coursesService: CoursesService) { }
+  constructor(private coursesService: CoursesService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.loadCourses();
@@ -35,16 +37,27 @@ export class AllCoursesAdminComponent implements OnInit {
     );
   }
 
-deleteCourse(courseId: number) {
+  deleteCourse(courseId: number) {
+    console.log(`Deleting course with ID ${courseId}`);
+  }
 
-  console.log(`Deleting course with ID ${courseId}`);
-}
+  updateCourse(courseId: number) {
+    const courseToUpdate = this.courses.find(c => c.idCourse === courseId);
 
+    // Open the modal using NgbModal
+    const modalRef = this.modalService.open(UpdateCoursesAdminComponent);
+    modalRef.componentInstance.updatedCourse = { ...courseToUpdate };
 
-updateCourse(courseId: number) {
-
-  // For example, navigate to an update/edit page or open a modal
-  console.log(`Updating course with ID ${courseId}`);
-}
-
+    // Subscribe to the modal's result to handle any actions after the modal closes
+    modalRef.result.then(
+      (result) => {
+        // Handle success (e.g., refresh course list)
+        this.loadCourses();
+      },
+      (reason) => {
+        // Handle dismissal or other scenarios
+        console.log(`Modal dismissed with reason: ${reason}`);
+      }
+    );
+  }
 }
